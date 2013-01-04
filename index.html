@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Pie chart drawer</title>
+  
+  <link rel="stylesheet" href="pie.css">
+  
+  <script type="text/javascript" src="pie.js"></script>
+  <script type="text/javascript" src="jquery.js"></script>
+
+</head>
+<body>
+  <h1>Pie chart drawer demo</h1>
+
+  <div id="myPie"></div>
+
+  <script type="text/javascript">
+
+    var piePiecesData = [
+        [ 90, '#005596' ],
+        [ 45, '#445596' ],
+        [ 45, '#440096' ],
+        [ 90, '#005596' ],
+        [ 45, '#000096' ],
+        [ 45, '#e76c24' ]
+    ];
+
+    pieChart.draw('myPie', piePiecesData, 5000);
+
+  </script>
+
+</body>
+</html>

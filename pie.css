@@ -1,0 +1,39 @@
+.pie-container{
+  /* to control all chart em values; override it where needed */
+  font-size: 20px; 
+  
+  width: 10em;
+  height: 10em;
+}
+/* piechart background */
+.pie-container:after{
+  content: '';
+  
+  background-color: #ddd;
+  box-shadow: -1px 1px 3px #000;
+}
+.pie-pieces{
+  position: relative;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.pie-pieces .piece-container,
+.pie-pieces .piece,
+.pie-container:after{
+  position: absolute;
+  width: 10em;
+  height: 10em;
+  
+  -moz-border-radius: 5em;
+  -webkit-border-radius: 5em;
+  -o-border-radius: 5em;
+  border-radius: 5em;
+}
+.pie-pieces .piece-container{
+  clip: rect(0, 10em, 10em, 5em);
+}
+.pie-pieces .piece{
+  clip: rect(0, 5em, 10em, 0);
+}
