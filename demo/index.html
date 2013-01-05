@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>Pie chart drawer</title>
   
-  <link rel="stylesheet" href="pie.css">
+  <link rel="stylesheet" href="../pie.css">
   
-  <script type="text/javascript" src="pie.js"></script>
+  <script type="text/javascript" src="../pie.js"></script>
   <script type="text/javascript" src="jquery.js"></script>
 
 </head>
@@ -18,12 +18,10 @@
   <script type="text/javascript">
 
     var piePiecesData = [
-        [ 90, '#005596' ],
+        [ 90, 'red' ],
         [ 45, '#445596' ],
-        [ 45, '#440096' ],
-        [ 90, '#005596' ],
-        [ 45, '#000096' ],
-        [ 45, '#e76c24' ]
+        [ 45 ],
+        [ 123, '#005596' ]
     ];
 
     pieChart.draw('myPie', piePiecesData, 5000);
