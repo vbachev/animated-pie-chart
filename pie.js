@@ -1,4 +1,4 @@
-// an object host the simple piechart methods
+// an object to host the piechart methods
 var pieChart = {
 
     // receives configuration, adds html and starts animating pieces
@@ -29,7 +29,7 @@ var pieChart = {
         a_speed  = a_speed  || 2000;
 
         // get chart html
-        var html = '<ul class="pie-pieces">';
+        var htmlChunks = ;
         for( index = 0; index < piecesCount; index++ )
         {
             piece = a_pieces[ index ];
@@ -43,23 +43,24 @@ var pieChart = {
                 piece[1] = this.generateRandomColor();
             }
 
-            html += '<li id="pie-piece-' + index + '" class="piece-container" ' +
-                        'data-start="' + ( start + a_offset ) + '" data-end="' + piece[0] + '">' +
-                        '<span class="piece" style="background-color:' + piece[1] + '; ' +
-                            '-webkit-transition: -webkit-transform ' + duration + 's linear ' + delay + 's; ' +
-                            'transition: transform ' + duration + 's linear ' + delay + 's;">' +
-                        '</span>' +
-                    '</li>';
+            htmlChunks.push(
+                '<li id="pie-piece-' + index + '" class="piece-container" ' +
+                    'data-start="' + ( start + a_offset ) + '" data-end="' + piece[0] + '">' +
+                    '<span class="piece" style="background-color:' + piece[1] + '; ' +
+                        '-webkit-transition: -webkit-transform ' + duration + 's linear ' + delay + 's; ' +
+                        'transition: transform ' + duration + 's linear ' + delay + 's;">' +
+                    '</span>' +
+                '</li>'
+            );
             
             // add this piece's delay to the start value for next one
             start += piece[0];
         }
-        html += '</ul>';
 
-        return html;
+        return '<ul class="pie-pieces">' + htmlChunks.join('') + '</ul>';
     },
 
-    // check for pieces larger than 90 degrees and splits them
+    // check for pieces larger than 90 degrees and split them. takes the pieces array as argument and modifies it
     splitLargePieces : function( a_pieces )
     {
         var index,
@@ -71,19 +72,21 @@ var pieChart = {
             piece = a_pieces[ index ];
             if( piece[0] > 90 )
             {
+                // calculate how many 90 degrees pieces we need
                 var subPieceCount = Math.floor( piece[0] / 90 );
+                // and how many degrees should we add at the end as leftover
                 var leftOverDegrees = piece[0] - subPieceCount*90;
                 
-                // remove current
+                // remove current item
                 a_pieces.splice( index, 1 );
 
+                // create the necessary 90 degrees fill items
                 for( var i = 0; i < subPieceCount; i++ ){
-                    // create the necessary fill items
                     a_pieces.splice( index, 0, [ 90, piece[1] ]);
                 }
 
+                // add the leftover item
                 if( leftOverDegrees ){
-                    // add the leftover item
                     a_pieces.splice( index, 0, [ leftOverDegrees, piece[1] ]);
                 }
             }
