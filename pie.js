@@ -18,18 +18,17 @@ var pieChart = {
     getChartHtml: function( a_pieces, a_speed, a_offset )
     {
         var index,
+        piecesCount = a_pieces.length,
+        htmlChunks = [],
         start = 0,
-        key,
         delay,
         duration,
-        piece,
-        piecesCount = a_pieces.length;
+        piece;
 
         a_offset = a_offset || 0;
         a_speed  = a_speed  || 2000;
 
         // get chart html
-        var htmlChunks = ;
         for( index = 0; index < piecesCount; index++ )
         {
             piece = a_pieces[ index ];

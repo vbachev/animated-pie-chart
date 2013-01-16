@@ -1,5 +1,9 @@
 .pie-container{
-  /* to control all chart em values; override it where needed */
+  /* 
+   * font size is used to control 
+   * all chart em values; 
+   * override it where needed 
+   */
   font-size: 20px; 
   
   width: 10em;
